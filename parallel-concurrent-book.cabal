@@ -19,8 +19,10 @@ description:         Please see the README on Github at <https://github.com/gith
 
 library
   hs-source-dirs:      src
-  exposed-modules:     C7
+  exposed-modules:     C7, ConcurrentPhoneBook
   build-depends:       base >= 4.7 && < 5
+                     , filepath
+                     , directory
   default-language:    Haskell2010
 
 executable app
