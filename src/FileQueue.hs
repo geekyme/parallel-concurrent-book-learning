@@ -1,5 +1,8 @@
 {-
   POC a persistent queue
+   - persist state to disk
+   - allow multiple readers and writers
+   - in order processing
   TODO:
    - this needs to handle restarts, read the stuff in todo/ doing/ and add them to the channels
    - this also needs to handle a more reliable test
