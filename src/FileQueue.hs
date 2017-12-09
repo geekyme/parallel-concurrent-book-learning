@@ -6,6 +6,7 @@
   TODO:
    - this needs to handle restarts, read the stuff in todo/ doing/ and add them to the channels
    - this also needs to handle a more reliable test
+   - the atomic stuff only allow one task to be done at one time and will block all readers / writers until the task is done
 -}
 
 module FileQueue
@@ -138,7 +139,10 @@ main = do
     add q i
     putStrLn $ "added " ++ show i
   forM_ items $ \i -> forkIO $ do
-    start q (\i -> putStrLn $ "started " ++ show i)
-  threadDelay 5000000
+    start q (\i -> do
+        putStrLn $ "started " ++ show i
+        threadDelay 500000
+      )
+  threadDelay 10000000
   endQueue q
 
