@@ -1,8 +1,8 @@
 module Main where
 
 import C7
-import qualified ConcurrentPhoneBook
+import qualified FileQueue
 
 main :: IO ()
 main = do
-  ConcurrentPhoneBook.main
+  FileQueue.main
