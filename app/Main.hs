@@ -1,8 +1,8 @@
 module Main where
 
 import C7
-import qualified FileQueue
+import qualified BetterFileQueue
 
 main :: IO ()
 main = do
-  FileQueue.main
+  BetterFileQueue.main

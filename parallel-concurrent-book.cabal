@@ -19,7 +19,7 @@ description:         Please see the README on Github at <https://github.com/gith
 
 library
   hs-source-dirs:      src
-  exposed-modules:     C7, ConcurrentPhoneBook, FileQueue, PersistentQueueDemo
+  exposed-modules:     C7, ConcurrentPhoneBook, FileQueue, BetterFileQueue
   build-depends:       base >= 4.7 && < 5
                      , filepath
                      , directory
