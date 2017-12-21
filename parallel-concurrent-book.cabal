@@ -19,10 +19,11 @@ description:         Please see the README on Github at <https://github.com/gith
 
 library
   hs-source-dirs:      src
-  exposed-modules:     C7, ConcurrentPhoneBook, FileQueue
+  exposed-modules:     C7, ConcurrentPhoneBook, FileQueue, PersistentQueueDemo
   build-depends:       base >= 4.7 && < 5
                      , filepath
                      , directory
+                     , TCache
   default-language:    Haskell2010
 
 executable app
