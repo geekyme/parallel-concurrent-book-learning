@@ -7,22 +7,21 @@ import Control.Concurrent
 import Data.TCache
 import Control.Monad
 
--- TODO: this currently doesn't work well because the push / pops are non-atomic i suspect
+-- TODO: the atomic stuff also doesn't seem to be working as expected. output:
 {-
+
 1
-2
-3
-4
-5
-6
-7
-8
-9111911
-99111111222222222233333333334444444444555555555566666666667777777777888888888999999980128037945678901234567890123456789012345678901234567890123456789012345678901235678901234564
+23456789111111111122222222333334444555556666677777888
+2233333444488889999999999144555556666677777888
 
 
 
-0
+
+
+
+0123456789012345791357913580246802468024680246802468024667890123456789079135791357913579135
+
+
 -}
 -- NOTES: we can't have 2 different handlers of q like this and make q1 automatically pop what was pushed to q2.
 --
@@ -36,9 +35,9 @@ main = do
   let q = getQRef "parallelconc" :: RefQueue String
   forM_ [1..100] $ \_ -> forkIO $ do
     threadDelay 1000000
-    pop q >>= putStrLn
+    (atomically $ popSTM q) >>= putStrLn
   forM_ [1..100] $ \num -> forkIO $ do
     threadDelay 1000000
-    push q $ show num
+    atomically $ pushSTM q $ show num
   threadDelay 10000000
   syncCache
